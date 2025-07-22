@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Check</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        .status-card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .healthy {
+            background-color: #d4edda; /* green */
+            border-color: #c3e6cb; /* green */
+            color: #155724; /* dark green */
+        }
+        .unhealthy {
+            background-color: #f8d7da; /* red */
+            border-color: #f5c6cb; /* red */
+            color: #721c24; /* dark red */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Estado de las APIs</h1>
+        <div class="card status-card {{ 'healthy' if health_status.status == 'Saludable' else 'Mal' }}">
+            <div class="card-body">
+                <h5 class="card-title">Estado: {{ health_status.status }}</h5>
+                <p class="card-text">Estado de la base de datos: {{ health_status.db_status }}</p>
+                <p class="card-text">Tiempo de actividad: {{ health_status.uptime }}</p>
+                <p class="card-text">Última verificación: {{ health_status.timestamp }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
